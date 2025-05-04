@@ -1,37 +1,124 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('./parcels/head') %>
-    <title>Blogging App</title>
+    <title>Sign Up | Blogify</title>
+    <style>
+        .auth-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .auth-logo {
+            color: #3a86ff;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .auth-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .auth-subtitle {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+        .form-floating {
+            margin-bottom: 1rem;
+        }
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #6c757d;
+        }
+        .btn-signup {
+            width: 100%;
+            padding: 0.75rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: #6c757d;
+        }
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background-color: #dee2e6;
+        }
+        .divider-text {
+            padding: 0 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
     <%- include('./parcels/nav') %>
 
-    <div class= "container">
-        <form class="row g-3" action="/signup" method="post">
-            <div class="col-md-6">
-                <label for="fullName" class="form-label">fullName</label>
-                <input type="text" id="fullName" name="fullName" aria-describedby="fullName" class="form-control">
-              </div>
-            <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Email</label>
-              <input type="email" name="email" class="form-control" id="inputEmail4">
+    <div class="container">
+        <div class="auth-container">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">Create your account</h1>
+                <p class="auth-subtitle">Join Blogify and start sharing your stories</p>
             </div>
-            <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Password</label>
-              <input type="password" name = "password" class="form-control" id="inputPassword4">
+
+            <form action="/signup" method="POST">
+                <div class="form-floating">
+                    <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Full Name" required>
+                    <label for="fullName">Full Name</label>
+                </div>
+                
+                <div class="form-floating">
+                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email address" required>
+                    <label for="inputEmail">Email address</label>
+                </div>
+                
+                <div class="form-floating">
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required minlength="6">
+                    <label for="inputPassword">Password</label>
+                    <div class="form-text mt-1">Use at least 6 characters including letters and numbers</div>
+                </div>
+                
+                <div class="form-check mb-3 mt-2">
+                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                    <label class="form-check-label" for="termsCheck">
+                        I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-signup">Create Account</button>
+            </form>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-text">OR</span>
+                <div class="divider-line"></div>
             </div>
             
-            <div class="col-12">
-              
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/signin" class="text-decoration-none fw-medium">Sign in</a></p>
             </div>
-            <div class="col-12">
-              <button type="submit" class="btn btn-primary">Sign in</button>
-            </div>
-          </form>
+        </div>
     </div>
+    
     <%- include('./parcels/script') %>
 </body>
 </html>
